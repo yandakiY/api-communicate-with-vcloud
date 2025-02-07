@@ -4,7 +4,7 @@ services:
   api:
     build: .
     ports:
-      - "8000:8000"
+      - "6874:6874"
     environment:
       - MAX_FILE_SIZE=10485760
     volumes:

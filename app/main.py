@@ -3,6 +3,7 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 import requests
+import uvicorn
 
 app = FastAPI()
 
@@ -36,3 +37,7 @@ async def upload_file(store_id: str, file: UploadFile = File(...)):
         return {"message": "Fichier envoyé avec succès", "correlationId": response.json().get("correlationId")}
     else:
         return {"error": response.json().get("message", "Une erreur est survenue"), "code": response.status_code}
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=6874)
